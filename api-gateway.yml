@@ -17,7 +17,7 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/users/**
-        filters:
+          filters:
             - TokenRelay=
         - id: order-service
           uri: lb://order-service
