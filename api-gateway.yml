@@ -17,11 +17,17 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/users/**
-
+        filters:
+            - TokenRelay=
         - id: order-service
           uri: lb://order-service
           predicates:
             - Path=/orders/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/spring-microservice
 
 eureka:
   client:
